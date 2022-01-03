@@ -17,7 +17,7 @@ export const SliderData = [
           price:  "4,280,000",
           path: "/homes",
           label: "View Home",
-          image: ImageOne,
+          image: ImageTwo,
           alt: "House"
         },
 {
@@ -25,7 +25,7 @@ export const SliderData = [
               price:  "4,280,000",
               path: "/homes",
               label: "View Home",
-              image: ImageOne,
+              image: ImageThree,
               alt: "House"
             },
 {
@@ -33,7 +33,7 @@ export const SliderData = [
                   price:  "4,280,000",
                   path: "/homes",
                   label: "View Home",
-                  image: ImageOne,
+                  image: ImageFour,
                   alt: "House"
                 },
 {
@@ -41,7 +41,7 @@ export const SliderData = [
                       price:  "4,280,000",
                       path: "/homes",
                       label: "View Home",
-                      image: ImageOne,
+                      image: ImageTwo,
                       alt: "House"
                     },
 {
@@ -49,7 +49,7 @@ export const SliderData = [
                           price:  "4,280,000",
                           path: "/homes",
                           label: "View Home",
-                          image: ImageOne,
+                          image: ImageThree,
                           alt: "House"
                         }
 ]
