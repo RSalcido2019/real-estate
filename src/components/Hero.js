@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef  } from 'react'
 import styled, { css } from "styled-components/macro";
 import { Button } from "./Button.js";
 import { IoMdArrowRoundForward } from "react-icons/io";
@@ -35,7 +35,7 @@ const HeroSlider = styled.div`
   justify-content: center;
 
   &::before {
-    content: '';
+    content: ' ';
     position: absolute;
     z-index: 2;
     width: 100%;
@@ -44,10 +44,11 @@ const HeroSlider = styled.div`
     left: 0;
     overflow: hidden;
     opacity: 0.4;
-    background: linear-gradient(0deg,
+    background: linear-gradient(
+    0deg,
     rgba(0,0,0,0.2) 0%,
     rgba(0,0,0,0.2) 50%,
-    rgba(0,0,0,0.6) 1000%
+    rgba(0,0,0,0.6) 100%
     );
   }
 `;
@@ -60,12 +61,34 @@ const HeroImage = styled.img`
   height: 100vh;
   object-fit: cover;
 `;
-const HeroContent = styled.div``;
+const HeroContent = styled.div`
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  max-width: 1600px;
+  width: calc(100% - 100px);
+   color: #fff;
+
+  h1 {
+    font-size: clamp(1rem, 8vw, 2rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 20px rgba(0,0,0,0.4);
+    text-align: left;
+    margin-bottom: 0.8rem;
+  }
+  p {
+        margin-bottom: 1.2rem;
+        text-shadow: 0px 0px 20px rgba(0,0,0,0.4);
+  }
+`;
 const Arrow = styled(IoMdArrowRoundForward)``;
+
 const SliderButtons = styled.div`
   position: absolute;
   bottom: 50px;
-  right: 50 px;
+  right: 50px;
   display: flex;
   z-index: 10;
 `;
