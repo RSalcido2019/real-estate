@@ -10,15 +10,17 @@ max-height: 1100px;
 position: relative;
 overflow: hidden;
 `;
+
 const HeroWrapper = styled.div`
-width: 100%;
-height: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-overflow: hidden;
-position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
 `;
+
 const HeroSlide = styled.div`
   z-index: 1;
   width: 100%;
@@ -35,11 +37,11 @@ const HeroSlider = styled.div`
   justify-content: center;
 
   &::before {
-    content: ' ';
-    position: absolute;
-    z-index: 2;
+    content: "";
     width: 100%;
     height: 100vh;
+    z-index: 2;
+    position: absolute;
     bottom: 0vh;
     left: 0;
     overflow: hidden;
@@ -61,6 +63,7 @@ const HeroImage = styled.img`
   height: 100vh;
   object-fit: cover;
 `;
+
 const HeroContent = styled.div`
   position: relative;
   z-index: 10;
@@ -68,7 +71,7 @@ const HeroContent = styled.div`
   flex-direction: column;
   max-width: 1600px;
   width: calc(100% - 100px);
-   color: #fff;
+  color: #fff;
 
   h1 {
     font-size: clamp(1rem, 8vw, 2rem);
@@ -78,12 +81,15 @@ const HeroContent = styled.div`
     text-align: left;
     margin-bottom: 0.8rem;
   }
+
   p {
         margin-bottom: 1.2rem;
         text-shadow: 0px 0px 20px rgba(0,0,0,0.4);
   }
 `;
-const Arrow = styled(IoMdArrowRoundForward)``;
+const Arrow = styled(IoMdArrowRoundForward)`
+    margin-left: 0.5rem;
+`;
 
 const SliderButtons = styled.div`
   position: absolute;
@@ -116,29 +122,42 @@ const NextArrow = styled(IoArrowForward)`
 `;
 
 const Hero =( { slides }) => {
+ const [current, setCurrent] = useState(0)
+ const length = slides.length
+ const timeout = useRef(null)
+
+ const nextSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+ }
+
+ const prevSlide = () =>{
+    setCurrent(current === 0 ? length - 1 : current - 1);
+ }
 return(
     <HeroSection>
     <HeroWrapper>
        {slides.map((slide, index) => {
         return(
           <HeroSlide key={index}>
-                  <HeroSlider>
-                    <HeroImage src={slide.image} alt={slide.alt} />
-                        <HeroContent>
-                            <h1> {slide.title}</ h1>
-                            <p>{slide.price}</p>
-                            <Button to={slide.path} primary="true">
-                                {slide.label}
-                                <Arrow />
-                            </Button>
-                         </ HeroContent>
-                  < /HeroSlider>
-                < / HeroSlide>
+             {index === current && (
+               <HeroSlider>
+                   <HeroImage src={slide.image} alt={slide.alt} />
+                       <HeroContent>
+                           <h1> {slide.title}</ h1>
+                           <p>{slide.price}</p>
+                           <Button to={slide.path} primary="true">
+                               {slide.label}
+                               <Arrow />
+                           </Button>
+                        </ HeroContent>
+                 < /HeroSlider>
+             )}
+          < / HeroSlide>
         );
        })}
        <SliderButtons>
-        <PrevArrow />
-       <NextArrow />
+        <PrevArrow onClick={prevSlide} />
+       <NextArrow onClick={nextSlide} />
        </SliderButtons>
     </ HeroWrapper>
     </ HeroSection>
