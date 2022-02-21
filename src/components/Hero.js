@@ -35,9 +35,9 @@ const HeroSlider = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &::before {
-    content: "";
+ 
+    &::before {
+    content: '';
     width: 100%;
     height: 100vh;
     z-index: 2;
@@ -53,14 +53,15 @@ const HeroSlider = styled.div`
     rgba(0,0,0,0.6) 100%
     );
   }
+
 `;
 
 const HeroImage = styled.img`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  
   object-fit: cover;
 `;
 
@@ -72,6 +73,7 @@ const HeroContent = styled.div`
   max-width: 1600px;
   width: calc(100% - 100px);
   color: #fff;
+  
 
   h1 {
     font-size: clamp(1rem, 8vw, 2rem);
