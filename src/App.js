@@ -3,13 +3,15 @@ import Navbar from "./components/Navbar.js";
 import Hero from "./components/Hero.js";
 import { SliderData } from "./data/SliderData";
 import GlobalStyle from './globalStyles';
+import Dropdown from "./components/Dropdown";
 
 function App() {
   return (
      <>
      <GlobalStyle />
-     < Navbar />
-      < Hero slides={SliderData} />
+     <Navbar />
+     <Dropdown />
+      <Hero slides={SliderData} />
      </>
   );
 }
