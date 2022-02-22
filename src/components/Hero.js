@@ -1,4 +1,4 @@
-import React, { useState, useRef  } from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import styled, { css } from "styled-components/macro";
 import { Button } from "./Button.js";
 import { IoMdArrowRoundForward } from "react-icons/io";
@@ -61,7 +61,7 @@ const HeroImage = styled.img`
   top: 0;
   left: 0;
   width: 100%;
-  
+  height: 100%;
   object-fit: cover;
 `;
 
@@ -124,9 +124,26 @@ const NextArrow = styled(IoArrowForward)`
 `;
 
 const Hero =( { slides }) => {
- const [current, setCurrent] = useState(0)
- const length = slides.length
- const timeout = useRef(null)
+ const [current, setCurrent] = useState(0);
+ const length = slides.length;
+ const timeout = useRef(null);
+
+ useEffect(
+     () => {
+     const nextSlide = () => {
+         setCurrent(current => (current === length - 1 ? 0 : current + 1));
+     };
+
+     timeout.current = setTimeout(nextSlide, 3000);
+
+     return function () {
+         if (timeout.current) {
+             clearTimeout(timeout.current);
+         }
+      };
+    },
+     [current, length]
+ );
 
  const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -135,6 +152,11 @@ const Hero =( { slides }) => {
  const prevSlide = () =>{
     setCurrent(current === 0 ? length - 1 : current - 1);
  }
+
+ if(!Array.isArray(slides) || slides.length <= 0) {
+     return null
+ }
+
 return(
     <HeroSection>
     <HeroWrapper>
