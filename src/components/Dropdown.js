@@ -1,6 +1,9 @@
  import React from 'react'
  import styled from 'styled-components'
  import {Button} from "./Button";
+ import {FaTimes} from "react-icons/all";
+ import {Link} from 'react-router-dom';
+ import {menuData} from "../data/MenuData";
 
  const DropdownContainer = styled.div`
      position: fixed;
@@ -17,6 +20,13 @@
      top: 0;
  `;
 
+ const Icon = styled.div``;
+ const CloseIcon = styled(FaTimes)``;
+ const DropdownWrapper = styled.div``;
+ const DropdownMenu = styled.div``;
+ const DropdownLink = styled(Link)``;
+ const BtnWrap = styled.div``;
+
  const Dropdown = () => {
     return (
         <DropdownContainer>
@@ -24,21 +34,21 @@
                 <CloseIcon />
             </Icon>
             <DropdownWrapper>
+                <DropdownMenu>
                 {menuData.map((item, index) => {
                     <DropdownLink to={item.link} key={index}>
                         {item.title}
                     </DropdownLink>
                 })}
-              <DropdownMenu>
+              </DropdownMenu>
                   <BtnWrap>
                       <Button primary="true" round="true" big="true" to="/contact">
                         Contact Us
                       </Button>
-                      </BtnWrap>
-                  </DropdownMenu>
+                  </BtnWrap>
             </DropdownWrapper>
         </DropdownContainer>
-    )
- }
+    );
+ };
 
  export default Dropdown;
