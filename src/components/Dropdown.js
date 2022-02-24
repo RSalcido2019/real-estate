@@ -30,9 +30,19 @@
     outline: none;
  `;
 
- const CloseIcon = styled(FaTimes)``;
+ const CloseIcon = styled(FaTimes)`
+    color: #000d1a;
+ `;
+
  const DropdownWrapper = styled.div``;
- const DropdownMenu = styled.div``;
+
+ const DropdownMenu = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 80px);
+    text-align: center;
+    margin-bottom: 4rem;
+ `;
  const DropdownLink = styled(Link)``;
  const BtnWrap = styled.div``;
 
