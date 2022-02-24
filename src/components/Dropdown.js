@@ -42,8 +42,28 @@
     grid-template-rows: repeat(4, 80px);
     text-align: center;
     margin-bottom: 4rem;
+    
+    @media screen and (max-width: 480px) {
+      grid-template-rows: repeat(4, 60px);
+    }
  `;
- const DropdownLink = styled(Link)``;
+
+ const DropdownLink = styled(Link)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    list-style:none;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    
+    &:hover {
+        color: red;
+    }
+ `;
+
  const BtnWrap = styled.div``;
 
  const Dropdown = () => {
@@ -54,11 +74,11 @@
             </Icon>
             <DropdownWrapper>
                 <DropdownMenu>
-                {menuData.map((item, index) => {
+                {menuData.map((item, index) => (
                     <DropdownLink to={item.link} key={index}>
                         {item.title}
                     </DropdownLink>
-                })}
+                ))}
               </DropdownMenu>
                   <BtnWrap>
                       <Button primary="true" round="true" big="true" to="/contact">
