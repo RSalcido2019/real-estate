@@ -69,7 +69,7 @@
     justify-content: center;
  `;
 
- const Dropdown = () => {
+ const Dropdown = ({ isOpen }) => {
     return (
         <DropdownContainer>
             <Icon>
