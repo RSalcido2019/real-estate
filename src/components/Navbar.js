@@ -50,6 +50,7 @@ const NavMenu = styled.div`
 const NavMenuLinks = styled(Link)`
     ${NavLink}
  `;
+
 const NavBtn = styled.div`
 display: flex;
 align-items: center;
