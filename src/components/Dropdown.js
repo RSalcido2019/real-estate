@@ -64,7 +64,10 @@
     }
  `;
 
- const BtnWrap = styled.div``;
+ const BtnWrap = styled.div`
+    display:flex;
+    justify-content: center;
+ `;
 
  const Dropdown = () => {
     return (
